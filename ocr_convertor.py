@@ -52,10 +52,17 @@ if __name__ == '__main__':
     tool = tools[0]
     print(tool.get_available_languages())
     """
+    
+    ## この辺で、フレーム問題。
+    ## 任意の形に分割 を試す。
 
     ###  $ python3 ocr_convertor.py jpn test.png 
     args = sys.argv
-    txt = exec_OCR(args[1], args[2])
+    txt = 0
+    if len(args) == 2:
+        txt = exec_OCR('jpn', args[1])
+    else:
+        txt = exec_OCR(args[1], args[2])
     
     if len(args) == 4:
         with open(args[3], 'a') as f:
